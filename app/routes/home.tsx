@@ -1,13 +1,23 @@
+import Navbar from "~/components/Navbar";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Resume Analyzer by Papulo" },
+    { name: "description", content: "Analyze your resume with AI-powered insights." },
   ];
 }
 
 export default function Home() {
-  return <Welcome />;
+  return (
+    <main className="bg-[url('/images/bg-main.svg')] bg-cover p-4 min-h-dvh">
+      <Navbar />
+      <section className="main-section">
+        <div className="page-heading md:py-16">
+          <h1 className="w-full">Seguimiento de sus Solicitudes y Calificaciones de Currículum</h1>
+
+        </div>
+      </section>
+    </main>
+  );
 }
