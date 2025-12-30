@@ -1,8 +1,9 @@
+import { puter as puterIns } from "@heyputer/puter.js"
 import { create } from "zustand";
 
 declare global {
   interface Window {
-    puter: {
+    puterCDN: {
       auth: {
         getUser: () => Promise<PuterUser>;
         isSignedIn: () => Promise<boolean>;
@@ -96,8 +97,8 @@ interface PuterStore {
   clearError: () => void;
 }
 
-const getPuter = (): typeof window.puter | null =>
-  typeof window !== "undefined" && window.puter ? window.puter : null;
+const getPuter = (): typeof window.puterCDN | null =>
+  typeof window !== "undefined" && window.puterCDN ? window.puterCDN : null;
 
 export const usePuterStore = create<PuterStore>((set, get) => {
   const setError = (msg: string) => {
