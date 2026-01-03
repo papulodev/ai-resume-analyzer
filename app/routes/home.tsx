@@ -41,20 +41,20 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-[url('/images/bg-main.svg')] bg-cover p-4 min-h-dvh">
+    <main className="flex flex-col p-4 gap-8 min-h-dvh basis-full">
       <Navbar />
       <section className="main-section">
         <div className="page-heading md:py-16">
           <h1 className="w-full">Seguimiento de sus Solicitudes y Calificaciones de Currículum</h1>
           {!loadingResumes && resumes?.length === 0 ? (
-            <h2>No resumes found. Upload your first resume to get feedback.</h2>
+            <h2>Sube tu primer resumé para obtener feedback.</h2>
           ) : (
-            <h2>Review your submissions and check AI-powered feedback.</h2>
+            <h2>Revise sus envíos y verifique los comentarios impulsados ​​por IA.</h2>
           )}
         </div>
         {loadingResumes && (
           <div className="flex flex-col items-center justify-center">
-            <img src="/images/resume-scan-2.gif" className="w-52" />
+            <img src="/images/resume-scan-2.gif" alt="resume gif scan" className="w-52" />
           </div>
         )}
 
@@ -67,9 +67,9 @@ export default function Home() {
         )}
 
         {!loadingResumes && resumes?.length === 0 && (
-          <div className="flex flex-col items-center justify-center mt-10 gap-4">
+          <div className="flex flex-col items-center justify-center gap-4">
             <Link to="/upload" className="primary-button w-fit text-xl font-semibold">
-              Upload Resume
+              Subir CV
             </Link>
           </div>
         )}
