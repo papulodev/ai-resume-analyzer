@@ -9,7 +9,6 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@heyputer/puter.js": "^2.2.2",
     "@react-router/node": "7.10.1",
     "@react-router/serve": "7.10.1",
     "clsx": "^2.1.1",
@@ -26,6 +25,7 @@
     "@react-router/dev": "7.10.1",
     "@tailwindcss/vite": "^4.1.13",
     "@types/node": "^22",
+    "@types/pdfjs-dist": "^2.10.377",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "daisyui": "^5.5.14",
