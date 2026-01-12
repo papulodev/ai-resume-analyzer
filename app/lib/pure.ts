@@ -1,9 +1,8 @@
-import { puter as puterIns } from "@heyputer/puter.js"
 import { create } from "zustand";
 
 declare global {
   interface Window {
-    puterCDN: {
+    puter: {
       auth: {
         getUser: () => Promise<PuterUser>;
         isSignedIn: () => Promise<boolean>;
@@ -35,7 +34,7 @@ declare global {
       kv: {
         get: (key: string) => Promise<string | null>;
         set: (key: string, value: string) => Promise<boolean>;
-        delete: (key: string) => Promise<boolean>;
+        del: (key: string) => Promise<boolean>;
         list: (pattern: string, returnValues?: boolean) => Promise<string[]>;
         flush: () => Promise<boolean>;
       };
@@ -97,8 +96,8 @@ interface PuterStore {
   clearError: () => void;
 }
 
-const getPuter = (): typeof window.puterCDN | null =>
-  typeof window !== "undefined" && window.puterCDN ? window.puterCDN : null;
+const getPuter = (): typeof window.puter | null =>
+  typeof window !== "undefined" && window.puter ? window.puter : null;
 
 export const usePuterStore = create<PuterStore>((set, get) => {
   const setError = (msg: string) => {
@@ -351,7 +350,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
           ],
         },
       ],
-      { model: "claude-sonnet-4" }
+      { model: "claude-opus-4.5" }
     ) as Promise<AIResponse | undefined>;
   };
 
@@ -388,7 +387,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
       setError("Puter.js not available");
       return;
     }
-    return puter.kv.delete(key);
+    return puter.kv.del(key);
   };
 
   const listKV = async (pattern: string, returnValues?: boolean) => {
