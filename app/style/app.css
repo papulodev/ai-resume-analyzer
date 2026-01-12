@@ -1,0 +1,181 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@import "./fonts.css";
+
+@plugin "daisyui" {
+  themes: light --default;
+}
+
+:root {
+  --color-button-sky: oklch(22.805% 0.11508 289.33);
+  --color-dark-200: oklch(44.224% 0.03552 257.813);
+  --color-light-blue-100: oklch(86.54% 0.05522 264.752 / 0.102);
+  --color-light-blue-200: oklch(80.422% 0.07603 264.744 / 0.302);
+
+  --color-badge-green: oklch(95.635% 0.04001 179.224);
+  --color-badge-red: oklch(93.33% 0.02421 20.501);
+  --color-badge-yellow: oklch(95.441% 0.03261 79.242);
+
+  --color-badge-green-text: oklch(39.014% 0.04562 189.15);
+  --color-badge-red-text: oklch(38.714% 0.11297 25.967);
+  --color-badge-yellow-text: oklch(40.178% 0.09834 39.456);
+
+  --shadow-main: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 20px 10px rgba(255, 255, 255, 1);
+}
+
+@theme inline {
+  --font-sans: var(--font-mona-sans);
+  --color-dark-200: var(--color-dark-200);
+  --color-light-blue-100: var(--color-light-blue-100);
+  --color-light-blue-200: var(--color-light-blue-200);
+
+  --color-badge-green: var(--color-badge-green);
+  --color-badge-red: var(--color-badge-red);
+  --color-badge-yellow: var(--color-badge-yellow);
+
+  --color-badge-green-text: var(--color-badge-green-text);
+  --color-badge-red-text: var(--color-badge-red-text);
+  --color-badge-yellow-text: var(--color-badge-yellow-text);
+
+  --color-button-sky: var(--color-button-sky);
+  --animate-aurora: aurora 60s linear infinite;
+
+  --shadow-main: var(--shadow-main);
+  --shadow-inset: var(--shadow-inset);
+}
+
+h1 {
+  @apply text-4xl md:text-7xl text-gray-900 leading-tight tracking-[-2px] font-semibold;
+}
+
+h2 {
+  @apply text-2xl md:text-4xl text-dark-200;
+}
+
+form {
+  @apply flex flex-col items-start gap-8 w-full;
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
+  }
+
+  .primary-button {
+    @apply btn border-0 bg-button-sky text-white rounded-full px-4 py-2 cursor-pointer w-full hover:bg-button-sky/80 transition-colors;
+  }
+
+  .resume-nav {
+    @apply flex flex-row justify-between items-center p-4 border-b border-gray-200;
+  }
+
+  .resume-summary {
+    @apply flex flex-row items-center justify-center p-4 gap-4;
+
+    .category {
+      @apply flex flex-row gap-2 items-center bg-gray-50 rounded-2xl p-4 w-full justify-between;
+    }
+  }
+
+  .back-button {
+    @apply flex flex-row items-center gap-2 border border-gray-200 rounded-lg p-2 shadow-sm;
+  }
+
+  .auth-button {
+    @apply primary-gradient rounded-full py-4 px-8 cursor-pointer w-[600px] max-md:w-full text-3xl font-semibold text-white;
+  }
+
+  .main-section {
+    @apply flex flex-col relative items-center justify-center gap-8 pt-4 pb-1.5 mx-4 md:pt-12 md:mx-16 md:pb-5 flex-1 rounded-2xl bg-white/10 backdrop-blur-2xl border border-white/10 transition-colors hover:bg-white/20;
+  }
+
+  .page-heading {
+    @apply flex flex-col items-center gap-8 max-w-4xl text-center p-4 md:py-16 md:px-8;
+  }
+
+  .resumes-section {
+    @apply flex flex-wrap max-lg:flex-col gap-6 w-full max-w-[1850px] justify-evenly p-1.5;
+  }
+
+  .resume-card {
+    @apply flex flex-col gap-2 md:h-140 w-full lg:w-[450px] xl:w-[490px] bg-white rounded-2xl p-4;
+  }
+
+  .resume-card-header {
+    @apply flex flex-row gap-2 justify-between min-h-[110px] max-sm:flex-col items-center max-md:justify-center max-md:items-center;
+  }
+
+  .feedback-section {
+    @apply flex flex-col gap-8 w-1/2 px-8 max-lg:w-full py-6;
+  }
+
+  .navbar {
+    @apply flex flex-row justify-between items-center bg-white/10 backdrop-blur-2xl rounded-full p-4 w-full px-10 max-w-[1200px] mx-auto border border-white/10 transition-colors hover:bg-white/20;
+  }
+
+  .score-badge {
+    @apply flex flex-row items-center justify-center py-1 px-2 gap-4 rounded-[96px];
+  }
+
+  .form-div {
+    @apply flex flex-col gap-2 w-full items-start;
+  }
+
+  .uplader-drag-area {
+    @apply relative p-8 text-center transition-all duration-700 cursor-pointer min-h-[208px];
+  }
+
+  .uploader-selected-file {
+    @apply flex items-center justify-between p-3 rounded-2xl;
+  }
+}
+
+@utility bg-gradient {
+  background: linear-gradient(to bottom, #f0f4ff 60%, #fa7185cc);
+}
+
+@utility text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
+}
+
+@utility gradient-hover {
+  @apply bg-linear-to-b from-light-blue-100 to-light-blue-200;
+}
+
+@utility primary-gradient {
+  background: linear-gradient(to bottom, #8e98ff, #606beb);
+  box-shadow: 0px 74px 21px 0px #6678ef00;
+}
+
+@utility primary-gradient-hover {
+  background: linear-gradient(to bottom, #717dff, #4957eb);
+}
+
+@utility inset-shadow {
+  box-shadow: inset 0 0 12px 0 rgba(36, 99, 235, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}

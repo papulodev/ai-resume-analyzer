@@ -1,0 +1,30 @@
+/* Local font-face definitions for Mona Sans.
+   Place variable and weight font files under /public/fonts/Mona_Sans/static/
+   Keep `font-display: swap` for better performance.
+*/
+
+@font-face {
+  font-family: "Mona Sans";
+  src: url("/fonts/Mona_Sans/static/MonaSans-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mona Sans";
+  src: url("/fonts/Mona_Sans/static/MonaSans-Italic-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* CSS variable used in the app and Tailwind config */
+:root {
+  --font-mona-sans: "Mona Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Utility class in case you want to apply the font directly */
+.font-mona-sans {
+  font-family: var(--font-mona-sans);
+}
