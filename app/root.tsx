@@ -5,29 +5,32 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  type LinksFunction,
 } from "react-router";
 
-// import type { Route } from "./+types/root";
-import "./app.css";
-import type { ErrorBoundaryProps } from "node_modules/react-router/dist/development/router-CwNp5l9u.mjs";
+import type { Route } from "./+types/root";
+import "./style/app.css";
 import { usePuterStore } from "./lib/pure";
 import { useEffect } from "react";
+import { AuroraBackground } from "./components/ui/AuroraBackground";
 
-export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+export const links: Route.LinksFunction = () => [
   {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
+    rel: "preload",
+    href: "/fonts/MonaSans-Variable.woff2",
+    as: "font",
+    type: "font/woff2",
     crossOrigin: "anonymous",
   },
   {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    rel: "preload",
+    href: "/fonts/MonaSans-Italic-Variable.woff2",
+    as: "font",
+    type: "font/woff2",
+    crossOrigin: "anonymous",
   },
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
 
   const { init } = usePuterStore();
 
@@ -45,7 +48,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <script src="https://js.puter.com/v2/"></script>
+        <script async src="https://js.puter.com/v2/"></script>
+        <AuroraBackground />
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -58,7 +62,7 @@ export default function App() {
   return <Outlet />;
 }
 
-export function ErrorBoundary({ error }: ErrorBoundaryProps) {
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
